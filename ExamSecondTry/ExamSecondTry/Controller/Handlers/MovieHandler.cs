@@ -1,14 +1,8 @@
 ﻿using ExamSecondTry.Controller.Factories.Interfaces;
-using ExamSecondTry.Data.DAL;
 using ExamSecondTry.Data.DAL.Interfaces;
 using ExamSecondTry.Data.Entities;
 using ExamSecondTry.View.DisplayManager.Interfaces;
 using ExamSecondTry.View.InputManager.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExamSecondTry.Controller.Handlers
 {
@@ -49,7 +43,6 @@ namespace ExamSecondTry.Controller.Handlers
                 MovieRepository.Delete(movieToRemove);
                 MovieRepository.Save();
             }
-
         }
         private Movie? GetMovie()
         {

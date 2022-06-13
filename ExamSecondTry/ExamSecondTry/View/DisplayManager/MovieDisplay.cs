@@ -13,6 +13,7 @@ namespace ExamSecondTry.View.DisplayManager
     {
         public void DisplayList(List<Movie> entities) => entities.ForEach(e => DisplaySingle(e));
 
-        public void DisplaySingle(Movie entity) => WriteLine($"Title:\t{entity.Title}|Director\t{entity.Director}|Review:\t{entity.Review}|Length:\t{entity.Length}");
+        public void DisplaySingle(Movie entity) 
+            => WriteLine($"Title:\t{entity.Title}|Director\t{entity.Director}|Review:\t{entity.Review}|Length:\t{entity.Length}");
     }
 }

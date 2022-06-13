@@ -11,8 +11,11 @@ namespace ExamSecondTry.Controller.Handlers
 {
     public class AppHandler : BaseHandler<Movie>
     {
-        public AppHandler(IMenuDisplay menuDisplay, IDisplay<Movie> display, IInputSystem inputSystem) : base(menuDisplay, display, inputSystem)
+        private MovieHandler MovieHandler;
+        public AppHandler(MovieHandler movieHandler, IMenuDisplay menuDisplay, IDisplay<Movie> display, IInputSystem inputSystem) 
+            : base(menuDisplay, display, inputSystem)
         {
+            MovieHandler = movieHandler;
         }
 
         protected override string[] GetAvailableCommands() 
@@ -24,22 +27,22 @@ namespace ExamSecondTry.Controller.Handlers
             switch (option)
             {
                 case "1":
-
+                    MovieHandler.AddNew();
                     break;
                 case "2":
-
+                    MovieHandler.DisplayAll();
                     break;
                 case "3":
-
+                    MovieHandler.DisplaySpecificMovie();
                     break;
                 case "4":
-
+                    MovieHandler.DisplayMovieFromSortedList(Index.End);
                     break;
                 case "5":
-
+                    MovieHandler.DisplayMovieFromSortedList(0);
                     break;
                 case "6":
-
+                    MovieHandler.DeleteMovie();
                     break;
                 case "quit":
                     break;
