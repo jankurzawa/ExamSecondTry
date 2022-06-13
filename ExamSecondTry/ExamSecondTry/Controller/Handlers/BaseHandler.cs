@@ -10,16 +10,16 @@ namespace ExamSecondTry.Controller.Handlers
 {
     public abstract class BaseHandler <T> where T : class
     {
-        protected IMenuDisplay _menuDisplay;
-        protected IDisplay<T> _display;
-        protected IInputSystem _inputSystem;
+        protected IMenuDisplay MenuDisplay;
+        protected IDisplay<T> Display;
+        protected IInputSystem InputSystem;
         protected string[] options;
 
         public BaseHandler(IMenuDisplay menuDisplay, IDisplay<T> display, IInputSystem inputSystem)
         {
-            _menuDisplay = menuDisplay;
-            _display = display;
-            _inputSystem = inputSystem;
+            MenuDisplay = menuDisplay;
+            Display = display;
+            InputSystem = inputSystem;
             options = GetAvailableCommands();
         }
 
@@ -28,12 +28,12 @@ namespace ExamSecondTry.Controller.Handlers
             string userInput = "";
             while (!userInput.Equals("quit"))
             {
-                _menuDisplay.ClearScreen();
-                _menuDisplay.PrintOptions(new List<string>(options));
-                userInput = _inputSystem.FetchStringValue("Provide option ");
+                MenuDisplay.ClearScreen();
+                MenuDisplay.PrintOptions(new List<string>(options));
+                userInput = InputSystem.FetchStringValue("Provide option ");
                 RunFeatureBasedOn(userInput);
-                _inputSystem.FetchStringValue("Press enter to continue");
-                _menuDisplay.ClearScreen();
+                InputSystem.FetchStringValue("Press enter to continue");
+                MenuDisplay.ClearScreen();
             }
         }
         protected abstract void RunFeatureBasedOn(string option);
