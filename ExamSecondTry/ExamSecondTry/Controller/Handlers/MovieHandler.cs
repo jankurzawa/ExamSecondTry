@@ -58,19 +58,18 @@ namespace ExamSecondTry.Controller.Handlers
         }
         private Movie? GetMovie()
         {
-            var option = Inputsystem.FetchStringValue("By what attribute do you want to choose the movie? [t] - title\n[d] - director");
+            string option = "";
+            while (option != "d" && option != "t" )
+            {
+                option = Inputsystem.FetchStringValue("By what attribute you want to choose the movie?\n[t] - title\n[d] - director");
+            }
             var dateToSearch = Inputsystem.FetchStringValue("enter data: ");
             Movie searchedMovie = null;
 
-            if (option == "t")
-                searchedMovie = MovieRepository.GetSingle(m => m.Title == dateToSearch);
-            else if (option == "d")
-                searchedMovie = MovieRepository.GetSingle(m => m.Director == dateToSearch);
-            else
-            {
-                Inputsystem.FetchStringValue("Not found. Press enter to continue.");
-                return searchedMovie;
-            }
+            if (option == "t") searchedMovie = MovieRepository.GetSingle(m => m.Title == dateToSearch);
+            else if (option == "d") searchedMovie = MovieRepository.GetSingle(m => m.Director == dateToSearch);
+            else Inputsystem.FetchStringValue("Not found. Press enter to continue.");
+            
             return searchedMovie;
         }
         private List<Movie> GetAllSorted() => MovieRepository.GetAll().OrderBy(m => m.Length).ToList();
