@@ -1,6 +1,7 @@
 ﻿using ExamSecondTry.Controller.Factories.Interfaces;
 using ExamSecondTry.Data.DAL.Interfaces;
 using ExamSecondTry.Data.Entities;
+using ExamSecondTry.Model.Utils.CustomExceptions;
 using ExamSecondTry.View.DisplayManager.Interfaces;
 using ExamSecondTry.View.InputManager.Interfaces;
 
@@ -36,13 +37,13 @@ namespace ExamSecondTry.Controller.Handlers
         public void DisplayTheShortestMovie()
         {
             var allMoviesSorted = GetAllSorted();
-            if (allMoviesSorted.Count == 0) return; //throw
+            if (allMoviesSorted.Count == 0) throw new EmptyMovieListException();
             else MovieDisplay.DisplaySingle(allMoviesSorted.First());
         }
         public void DisplayTheLongestMovie()
         {
             var allMoviesSorted = GetAllSorted();
-            if (allMoviesSorted.Count == 0) return; //throw
+            if (allMoviesSorted.Count == 0) throw new EmptyMovieListException();
             else MovieDisplay.DisplaySingle(allMoviesSorted.Last());
         }
         private List<Movie> GetAllSorted() => MovieRepository.GetAll().OrderBy(m => m.Length).ToList();
@@ -69,7 +70,7 @@ namespace ExamSecondTry.Controller.Handlers
             else
             {
                 Inputsystem.FetchStringValue("Not found. Press enter to continue.");
-                return null;
+                return searchedMovie;
             }
             return searchedMovie;
         }
