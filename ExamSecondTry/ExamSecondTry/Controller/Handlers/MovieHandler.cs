@@ -36,6 +36,14 @@ namespace ExamSecondTry.Controller.Handlers
         public void DisplayAll() => MovieDisplay.DisplayList(MovieRepository.GetAll());
         public void DisplaySpecificMovie()
         {
+            var searchedMovie = GetMovie();
+            if (searchedMovie != null) MovieDisplay.DisplaySingle(searchedMovie);
+        }
+        public void DisplayMovieFromSortedList(Index index) => MovieDisplay.DisplaySingle(MovieRepository.GetAll().OrderBy(m => m.Length).ToList()[index]);
+
+        
+        private Movie? GetMovie()
+        {
             var option = Inputsystem.FetchStringValue("By what attribute do you want to search for the movie? [t] - title\n[d] - director");
             var dateToSearch = Inputsystem.FetchStringValue("enter data: ");
             Movie searchedMovie = null;
@@ -47,11 +55,9 @@ namespace ExamSecondTry.Controller.Handlers
             else
             {
                 Inputsystem.FetchStringValue("Not found. Press enter to continue.");
-                return;
+                return null;
             }
-
-            MovieDisplay.DisplaySingle(searchedMovie);
+            return searchedMovie;
         }
-        public void DisplayMovieFromSortedList(Index index) => MovieDisplay.DisplaySingle(MovieRepository.GetAll().OrderBy(m => m.Length).ToList()[index]);
     }
 }
