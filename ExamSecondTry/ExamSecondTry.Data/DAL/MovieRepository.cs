@@ -12,7 +12,7 @@ namespace ExamSecondTry.Data.DAL
 {
     public class MovieRepository : IBaseRepository<Movie>
     {
-        MoviesContext moviesContext;
+        private MoviesContext moviesContext;
         public MovieRepository() => moviesContext = new();
         public void Add(Movie entity) => moviesContext.Movies.Add(entity);
         public void Delete(Movie entity) => moviesContext.Movies.Remove(entity);

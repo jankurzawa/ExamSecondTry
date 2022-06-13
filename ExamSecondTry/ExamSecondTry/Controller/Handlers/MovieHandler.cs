@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExamSecondTry.Data.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,10 @@ namespace ExamSecondTry.Controller.Handlers
 {
     public class MovieHandler
     {
+        private MovieRepository movieRepository;
+        public MovieHandler()
+        {
+            movieRepository = new();
+        }
     }
 }
