@@ -11,4 +11,8 @@
     <Folder Include="Controller\Handlers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ExamSecondTry.Data\ExamSecondTry.Data.csproj" />
+  </ItemGroup>
+
 </Project>
