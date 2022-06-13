@@ -5,6 +5,8 @@ VisualStudioVersion = 17.2.32516.85
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamSecondTry", "ExamSecondTry\ExamSecondTry.csproj", "{709F3D7D-F377-4E3C-81FA-69C92D91CD4C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExamSecondTry.Data", "ExamSecondTry.Data\ExamSecondTry.Data.csproj", "{504C0793-0F1E-4A27-9D0F-AE5178B5F51C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{709F3D7D-F377-4E3C-81FA-69C92D91CD4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{709F3D7D-F377-4E3C-81FA-69C92D91CD4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{709F3D7D-F377-4E3C-81FA-69C92D91CD4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{504C0793-0F1E-4A27-9D0F-AE5178B5F51C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{504C0793-0F1E-4A27-9D0F-AE5178B5F51C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{504C0793-0F1E-4A27-9D0F-AE5178B5F51C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{504C0793-0F1E-4A27-9D0F-AE5178B5F51C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
