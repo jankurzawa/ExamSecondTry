@@ -1,12 +1,8 @@
 ﻿using ExamSecondTry.Controller.Factories;
 using ExamSecondTry.Controller.Handlers;
 using ExamSecondTry.Data.DAL;
-using ExamSecondTry.Data.DAL.Interfaces;
-using ExamSecondTry.Data.Entities;
 using ExamSecondTry.View.DisplayManager;
-using ExamSecondTry.View.DisplayManager.Interfaces;
 using ExamSecondTry.View.InputManager;
-using System;
 
 namespace ExamSecondTry
 { 

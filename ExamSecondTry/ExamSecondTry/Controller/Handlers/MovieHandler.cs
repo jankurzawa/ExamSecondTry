@@ -9,10 +9,10 @@ namespace ExamSecondTry.Controller.Handlers
 {
     public class MovieHandler
     {
-        private IBaseRepository<Movie> MovieRepository;
-        private IDisplay<Movie> MovieDisplay;
-        private IBaseFactory<Movie> MovieFactory;
-        private IInputSystem Inputsystem;
+        private readonly IBaseRepository<Movie> MovieRepository;
+        private readonly IDisplay<Movie> MovieDisplay;
+        private readonly IBaseFactory<Movie> MovieFactory;
+        private readonly IInputSystem Inputsystem;
         public MovieHandler(IBaseRepository<Movie> movieRepository, IDisplay<Movie> movieDisplay, IBaseFactory<Movie> movieFactory, IInputSystem inputsystem)
         {
             MovieRepository = movieRepository;
@@ -46,7 +46,6 @@ namespace ExamSecondTry.Controller.Handlers
             if (allMoviesSorted.Count == 0) throw new EmptyMovieListException();
             else MovieDisplay.DisplaySingle(allMoviesSorted.Last());
         }
-        private List<Movie> GetAllSorted() => MovieRepository.GetAll().OrderBy(m => m.Length).ToList();
 
         public void DeleteMovie()
         {
@@ -74,5 +73,7 @@ namespace ExamSecondTry.Controller.Handlers
             }
             return searchedMovie;
         }
+        private List<Movie> GetAllSorted() => MovieRepository.GetAll().OrderBy(m => m.Length).ToList();
+
     }
 }

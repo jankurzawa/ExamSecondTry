@@ -1,17 +1,12 @@
 ﻿using ExamSecondTry.Data.Entities;
 using ExamSecondTry.View.DisplayManager.Interfaces;
 using ExamSecondTry.View.InputManager.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExamSecondTry.Controller.Handlers
 {
     public class AppHandler : BaseHandler<Movie>
     {
-        private MovieHandler MovieHandler;
+        private readonly MovieHandler MovieHandler;
         public AppHandler(MovieHandler movieHandler, IMenuDisplay menuDisplay, IDisplay<Movie> display, IInputSystem inputSystem) 
             : base(menuDisplay, display, inputSystem)
         {
