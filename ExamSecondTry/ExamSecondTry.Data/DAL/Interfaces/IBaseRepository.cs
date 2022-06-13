@@ -13,7 +13,6 @@ namespace ExamSecondTry.Data.DAL.Interfaces
         public void Add(T entity);
         public void Edit(T entity);
         public void Delete(T entity);
-        public void Sort();
         public void Save();
     }
 }
