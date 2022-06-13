@@ -20,7 +20,7 @@ namespace ExamSecondTry.Controller.Factories
 
         public Movie Create()
         {
-            string title = null, director = null, review = null, length = null, confirming = "n";
+            string title, director, review, length, confirming = "n";
             double parsedLength;
             do
             {

@@ -13,7 +13,7 @@ namespace ExamSecondTry.Data.DAL
         public void Delete(Movie entity) => moviesContext.Movies.Remove(entity);
         public void Edit(Movie entity) => moviesContext.Movies.Update(entity);
         public List<Movie> GetAll() => moviesContext.Movies.AsNoTracking().ToList();
-        public Movie GetSingle(Func<Movie, bool> condition) => moviesContext.Movies.Where(condition).FirstOrDefault();
+        public Movie? GetSingle(Func<Movie, bool> condition) => moviesContext.Movies.Where(condition).FirstOrDefault();
         public void Save() => moviesContext.SaveChanges();
     }
 }

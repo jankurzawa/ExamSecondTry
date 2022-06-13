@@ -13,7 +13,7 @@ namespace ExamSecondTry.View.InputManager
 
         public string FetchStringValueWithCondition(string messege, Predicate<string> contition)
         {
-            string value = "";
+            string value;
             do
             {
                 WriteLine(messege);
