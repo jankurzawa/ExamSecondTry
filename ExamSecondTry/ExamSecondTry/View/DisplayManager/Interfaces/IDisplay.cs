@@ -12,4 +12,3 @@ namespace ExamSecondTry.View.DisplayManager.Interfaces
         public void DisplayList(List<T> entities);
     }
 }
-}
