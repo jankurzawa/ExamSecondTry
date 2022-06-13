@@ -36,10 +36,10 @@ namespace ExamSecondTry.Controller.Handlers
                     MovieHandler.DisplaySpecificMovie();
                     break;
                 case "4":
-                    MovieHandler.DisplayMovieFromSortedList(Index.End);
+                    MovieHandler.DisplayMovieFromSortedList("last");
                     break;
                 case "5":
-                    MovieHandler.DisplayMovieFromSortedList(0);
+                    MovieHandler.DisplayMovieFromSortedList("first");
                     break;
                 case "6":
                     MovieHandler.DeleteMovie();

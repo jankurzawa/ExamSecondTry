@@ -19,7 +19,8 @@ namespace ExamSecondTry.Controller.Factories
         {
             InputSystem = inputSystem;
             CheckIfProvideStringIsCorrectForSongAttribute = value => value.Length > 0 && value != null;
-            CheckIfProvideLengthIsCorrectForSongAttribute = value => value.Length > 3 && value[^3] == '.' && double.Parse(value) % 1 < 0.60;
+            CheckIfProvideLengthIsCorrectForSongAttribute = value => value.Length > 3 && value[^3] == '.' 
+                && double.TryParse(value, out double result) && (double.Parse(value) % 1) < 0.60;
         }
 
         public Movie Create()

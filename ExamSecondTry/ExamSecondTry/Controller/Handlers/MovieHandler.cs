@@ -33,8 +33,18 @@ namespace ExamSecondTry.Controller.Handlers
             var searchedMovie = GetMovie();
             if (searchedMovie != null) MovieDisplay.DisplaySingle(searchedMovie);
         }
-        public void DisplayMovieFromSortedList(Index index) => MovieDisplay.DisplaySingle(MovieRepository.GetAll().OrderBy(m => m.Length).ToList()[index]);
-
+        public void DisplayTheShortestMovie() 
+        {
+            var allMovies = MovieRepository.GetAll().OrderBy(m => m.Length).ToList();
+            if (allMovies.Count == 0) return; //throw
+            else MovieDisplay.DisplaySingle(allMovies.First());
+        }
+        public void DisplayTheLongestMovie()
+        {
+            var allMovies = MovieRepository.GetAll().OrderBy(m => m.Length).ToList();
+            if (allMovies.Count == 0) return; //throw
+            else MovieDisplay.DisplaySingle(allMovies.Last());
+        }
         public void DeleteMovie()
         {
             var movieToRemove = GetMovie();
