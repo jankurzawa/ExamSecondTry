@@ -3,6 +3,7 @@ using ExamSecondTry.Data.DAL;
 using ExamSecondTry.Data.DAL.Interfaces;
 using ExamSecondTry.Data.Entities;
 using ExamSecondTry.View.DisplayManager.Interfaces;
+using ExamSecondTry.View.InputManager.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,11 +17,13 @@ namespace ExamSecondTry.Controller.Handlers
         private IBaseRepository<Movie> MovieRepository;
         private IDisplay<Movie> MovieDisplay;
         private IBaseFactory<Movie> MovieFactory;
-        public MovieHandler(IBaseRepository<Movie> movieRepository, IDisplay<Movie> movieDisplay, IBaseFactory<Movie> movieFactory)
+        private IInputSystem Inputsystem;
+        public MovieHandler(IBaseRepository<Movie> movieRepository, IDisplay<Movie> movieDisplay, IBaseFactory<Movie> movieFactory, IInputSystem inputsystem)
         {
             MovieRepository = movieRepository;
             MovieDisplay = movieDisplay;
             MovieFactory = movieFactory;
+            Inputsystem = inputsystem;
         }
 
         public void AddNew()
@@ -31,7 +34,24 @@ namespace ExamSecondTry.Controller.Handlers
         }
 
         public void DisplayAll() => MovieDisplay.DisplayList(MovieRepository.GetAll());
+        public void DisplaySpecificMovie()
+        {
+            var option = Inputsystem.FetchStringValue("By what attribute do you want to search for the movie? [t] - title\n[d] - director");
+            var dateToSearch = Inputsystem.FetchStringValue("enter data: ");
+            Movie searchedMovie = null;
 
+            if (option == "t") 
+                searchedMovie = MovieRepository.GetSingle(m => m.Title == dateToSearch);
+            else if (option == "d") 
+                searchedMovie = MovieRepository.GetSingle(m => m.Director == dateToSearch);
+            else
+            {
+                Inputsystem.FetchStringValue("Not found. Press enter to continue.");
+                return;
+            }
+
+            MovieDisplay.DisplaySingle(searchedMovie);
+        }
 
     }
 }
