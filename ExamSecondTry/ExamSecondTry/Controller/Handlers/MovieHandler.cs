@@ -41,10 +41,19 @@ namespace ExamSecondTry.Controller.Handlers
         }
         public void DisplayMovieFromSortedList(Index index) => MovieDisplay.DisplaySingle(MovieRepository.GetAll().OrderBy(m => m.Length).ToList()[index]);
 
-        
+        public void DeleteMovie()
+        {
+            var movieToRemove = GetMovie();
+            if (movieToRemove != null)
+            {
+                MovieRepository.Delete(movieToRemove);
+                MovieRepository.Save();
+            }
+
+        }
         private Movie? GetMovie()
         {
-            var option = Inputsystem.FetchStringValue("By what attribute do you want to search for the movie? [t] - title\n[d] - director");
+            var option = Inputsystem.FetchStringValue("By what attribute do you want to choose the movie? [t] - title\n[d] - director");
             var dateToSearch = Inputsystem.FetchStringValue("enter data: ");
             Movie searchedMovie = null;
 
