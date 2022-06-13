@@ -1,4 +1,5 @@
-﻿using ExamSecondTry.Data.Entities;
+﻿using ExamSecondTry.Data.Context.Seeders;
+using ExamSecondTry.Data.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace ExamSecondTry.Data.Context
@@ -14,6 +15,7 @@ namespace ExamSecondTry.Data.Context
         }
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.SeedDatabase();
         }
     }
 }
