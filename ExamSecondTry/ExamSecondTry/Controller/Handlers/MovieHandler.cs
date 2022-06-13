@@ -40,9 +40,9 @@ namespace ExamSecondTry.Controller.Handlers
             var dateToSearch = Inputsystem.FetchStringValue("enter data: ");
             Movie searchedMovie = null;
 
-            if (option == "t") 
+            if (option == "t")
                 searchedMovie = MovieRepository.GetSingle(m => m.Title == dateToSearch);
-            else if (option == "d") 
+            else if (option == "d")
                 searchedMovie = MovieRepository.GetSingle(m => m.Director == dateToSearch);
             else
             {
@@ -52,6 +52,6 @@ namespace ExamSecondTry.Controller.Handlers
 
             MovieDisplay.DisplaySingle(searchedMovie);
         }
-
+        public void DisplayMovieFromSortedList(Index index) => MovieDisplay.DisplaySingle(MovieRepository.GetAll().OrderBy(m => m.Length).ToList()[index]);
     }
 }
